@@ -1,3 +1,4 @@
+import { Optional } from '@angular/core';
 import { Component, ElementRef, Input, OnInit, Self, ViewChild } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 
@@ -12,8 +13,8 @@ export class TextInputComponent implements OnInit, ControlValueAccessor {
   @Input() type = 'text';
   @Input() label: string;
 
-  constructor(@Self() public controlDir: NgControl) {
-    this.controlDir.valueAccessor = this;
+  constructor(@Self() @Optional() public controlDir: NgControl) {
+    controlDir.valueAccessor = this;
   }
 
   ngOnInit() {
